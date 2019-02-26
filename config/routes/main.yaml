@@ -1,0 +1,9 @@
+home:
+  path:     /
+  controller: App\Controller\MainController::index
+  methods:   [GET]
+
+page:
+  path:     /{slug}
+  controller: App\Controller\MainController::page
+  methods:   [GET]

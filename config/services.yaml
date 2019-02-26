@@ -1,0 +1,70 @@
+# This file is the entry point to configure your own services.
+# Files in the packages/ subdirectory configure your dependencies.
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+parameters:
+  locale: 'en'
+
+services:
+
+  # default configuration for services in *this* file
+  _defaults:
+    autowire: true      # Automatically injects dependencies in your services.
+    autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+    public: false       # Allows optimizing the container by removing unused services; this also means
+      # fetching services directly from the container via $container->get() won't work.
+    # The best practice is to be explicit about your dependencies anyway.
+
+  # makes classes in src/ available to be used as services
+  # this creates a service per class whose id is the fully-qualified class name
+  App\:
+    resource: '../src/*'
+    exclude: '../src/{DependencyInjection,Entity,Migrations,Tests,Service,Controller,Kernel.php}'
+
+  # controllers are imported separately to make sure services can be injected
+  # as action arguments even if you don't extend any base controller class
+  App\Controller\:
+    resource: '../src/Controller'
+    tags: ['controller.service_arguments']
+
+  App\Service\ListView:
+    public: true
+    arguments: ['@doctrine.orm.entity_manager']
+    tags: ['service.list_view']
+
+  App\Twig\AppExtension:
+    public: false
+    tags:
+    # extensions with higher priorities are registered earlier
+    - { name: twig.extension, priority: -1024 }
+  # add more service definitions when explicit configuration is needed
+  # please note that last definitions always *replace* previous ones
+  admin.users:
+    class: App\Admin\UsersAdmin
+    arguments: [~, App\Entity\Users, ~]
+    tags:
+    - { name: sonata.admin, manager_type: orm, label: Users }
+  admin.resources:
+    class: App\Admin\ResourcesAdmin
+    arguments: [~, App\Entity\Resources, ~]
+    calls:
+    #         - [setTemplate, ['edit', '@App/Admin/resources/edit.html.twig']]
+    #      - [setTemplate, ['create', '@App/Admin/resources/edit.html.twig']]
+    tags:
+    - { name: sonata.admin, manager_type: orm, label: Resources }
+  admin.template:
+    class: App\Admin\TemplateAdmin
+    arguments: [~, App\Entity\Template, ~]
+    tags:
+    - { name: sonata.admin, manager_type: orm, label: Template }
+  admin.field_type:
+    class: App\Admin\FieldTypesAdmin
+    arguments: [~, App\Entity\FieldTypes, ~]
+    tags:
+    - { name: sonata.admin, manager_type: orm, label: FieldTypes }
+  admin.field:
+    class: App\Admin\FieldsAdmin
+    arguments: [~, App\Entity\Fields, ~]
+    tags:
+    - { name: sonata.admin, manager_type: orm, label: Field }

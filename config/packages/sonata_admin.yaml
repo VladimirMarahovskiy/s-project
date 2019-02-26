@@ -1,0 +1,36 @@
+sonata_admin:
+    title: 'MyPdP'
+    dashboard:
+        groups:
+            users:
+                keep_open:       true
+                icon: <i class="fa fa-lg fa-fw fa fa-users"></i>
+                label: Users
+                label_catalogue: ~
+                items:
+                    - admin.users
+            resources:
+                keep_open:       true
+                icon: <i class="fa fa-lg fa-fw fa fa-list"></i>
+                label: Resources
+                label_catalogue: ~
+                items:
+                    - admin.resources
+            settings:
+                keep_open:       true
+                icon: <i class="fa fa-lg fa-fw fa fa-cog"></i>
+                label: Settings
+                label_catalogue: ~
+                items:
+                    - admin.template
+                    - admin.field_type
+                    - admin.field
+
+
+        blocks:
+            - { type: sonata.admin.block.admin_list, position: left }
+
+sonata_block:
+    blocks:
+        sonata.admin.block.admin_list:
+            contexts: [admin]

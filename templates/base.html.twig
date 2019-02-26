@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="apple-touch-icon" sizes="57x57" href="/fav/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/fav/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/fav/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/fav/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/fav/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/fav/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/fav/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/fav/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/fav/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/fav/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/fav/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/fav/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/fav/favicon-16x16.png">
+    <link rel="manifest" href="/fav/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/fav/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <!-- Font -->
+    <link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css">
+    <!-- Slicknav -->
+    <link rel="stylesheet" type="text/css" href="/css/slicknav.css">
+    <!-- Owl carousel -->
+    <link rel="stylesheet" type="text/css" href="/css/owl.carousel.css">
+    <link rel="stylesheet" type="text/css" href="/css/owl.theme.css">
+    <!-- Animate -->
+    <link rel="stylesheet" type="text/css" href="/css/animate.css">
+    <!-- Main Style -->
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <!-- Extras Style -->
+    <link rel="stylesheet" type="text/css" href="/css/extras.css">
+    <!-- Responsive Style -->
+    <link rel="stylesheet" type="text/css" href="/css/responsive.css">
+    {% block stylesheets %}{% endblock %}
+</head>
+<body>
+<!-- Header Area wrapper Starts -->
+<header id="header-wrap">
+    <!-- Navbar Start -->
+    {% include 'structure/navbar.html.twig' %}
+    <!-- Navbar End -->
+</header>
+
+<!-- Header Area wrapper End -->
+{% block body %}{% endblock %}
+
+<!-- Footer Section -->
+<footer class="footer">
+    <!-- Container Starts -->
+    <div class="container">
+        <!-- Row Starts -->
+        <div class="row section">
+            <!-- Footer Widget Starts -->
+            <div class="footer-widget col-lg-3 col-md-6 col-xs-12 wow fadeIn">
+                <h3 class="small-title">
+                    About Us
+                </h3>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis veritatis eius porro modi hic. Lorem
+                    ipsum dolor sit amet, consectetur adipisicing elit.
+                </p>
+                <div class="social-footer">
+                    <a href="#"><i class="fa fa-facebook icon-round"></i></a>
+                    <a href="#"><i class="fa fa-twitter icon-round"></i></a>
+                    <a href="#"><i class="fa fa-linkedin icon-round"></i></a>
+                    <a href="#"><i class="fa fa-google-plus icon-round"></i></a>
+                </div>
+            </div>
+            <!-- Footer Widget Ends -->
+
+            <!-- Footer Widget Starts -->
+            <div class="footer-widget col-lg-3 col-md-6 col-xs-12 wow fadeIn" data-wow-delay=".2s">
+                <h3 class="small-title">
+                    Links
+                </h3>
+                <ul class="menu">
+
+                    {#            <li><a href="#">About Us</a></li>
+                              <li><a href="#">Services</a></li>
+                               <li><a href="#">Works</a></li>
+                               <li><a href="#">Pricing</a></li>
+                               <li><a href="#">Contact</a></li>#}
+                </ul>
+            </div>
+            <!-- Footer Widget Ends -->
+
+            <!-- Footer Widget Starts -->
+            <div class="footer-widget col-lg-3 col-md-6 col-xs-12 wow fadeIn" data-wow-delay=".5s">
+                <h3 class="small-title">
+                    GALLERY
+                </h3>
+                <div class="plain-flicker-gallery">
+                    <a href="#"><img src="/img/flicker/img1.jpg" alt=""></a>
+                    <a href="#"><img src="/img/flicker/img2.jpg" alt=""></a>
+                    <a href="#"><img src="/img/flicker/img3.jpg" alt=""></a>
+                    <a href="#"><img src="/img/flicker/img4.jpg" alt=""></a>
+                    <a href="#"><img src="/img/flicker/img5.jpg" alt=""></a>
+                    <a href="#"><img src="/img/flicker/img6.jpg" alt=""></a>
+                </div>
+            </div>
+            <!-- Footer Widget Ends -->
+
+            <!-- Footer Widget Starts -->
+            <div class="footer-widget col-lg-3 col-md-6 col-xs-12 wow fadeIn" data-wow-delay=".8s">
+                <h3 class="small-title">
+                    SUBSCRIBE US
+                </h3>
+                <div class="contact-us">
+                    <form>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="exampleInputName2"
+                                   placeholder="Enter your name">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" id="exampleInputEmail2"
+                                   placeholder="Enter your email">
+                        </div>
+                        <button type="submit" class="btn btn-common">Submit</button>
+                    </form>
+                </div>
+            </div>
+            <!-- Footer Widget Ends -->
+        </div>
+        <!-- Row Ends -->
+    </div>
+    <!-- Container Ends -->
+
+    <!-- Copyright -->
+    <div id="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-xs-12">
+                    <p class="copyright-text">All copyrights reserved © 2018 - Designed &amp; Developed by <a
+                                rel="nofollow" href="https://uideck.com">UIdeck</a>
+                    </p>
+                </div>
+                <div class="col-lg-6 col-md-6 col-xs-12">
+                    <ul class="nav nav-inline  justify-content-end ">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Sitemap</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Privacy Policy</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Terms of services</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Copyright  End-->
+
+</footer>
+<!-- Footer Section End-->
+
+<!-- Go to Top Link -->
+<a href="#" class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+</a>
+
+<!-- Preloader -->
+<div id="preloader">
+    <div class="loader" id="loader-1"></div>
+</div>
+<!-- End Preloader -->
+{% block javascripts %}{% endblock %}
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="/js/jquery-min.js"></script>
+<script src="/js/popper.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/owl.carousel.min.js"></script>
+<script src="/js/jquery.mixitup.js"></script>
+<script src="/js/jquery.countTo.js"></script>
+<script src="/js/jquery.nav.js"></script>
+<script src="/js/scrolling-nav.js"></script>
+<script src="/js/jquery.easing.min.js"></script>
+<script src="/js/jquery.slicknav.js"></script>
+<script src="/js/form-validator.min.js"></script>
+<script src="/js/contact-form-script.js"></script>
+<script src="/js/main.js"></script>
+</body>
+</html>

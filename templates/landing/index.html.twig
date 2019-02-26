@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello {{ controller_name }}!{% endblock %}
+
+{% block body %}
+
+
+    <!-- sliders -->
+    {% include 'landing/part/sliders.html.twig' %}
+    <!-- End sliders -->
+
+    <!-- About Section Start -->
+    {% include 'landing/part/about.html.twig' %}
+    <!-- About Section End -->
+
+    <!-- Services Section Start -->
+    {% include 'landing/part/services.html.twig' %}
+    <!-- Services Section End -->
+
+    <!-- Portfolio Section -->
+    {% include 'landing/part/portfolio.html.twig' %}
+    <!-- Portfolio Section Ends -->
+
+    <!-- Feature Section Start -->
+    {% include 'landing/part/feature.html.twig' %}
+    <!-- Feature Section End -->
+
+    <!-- facts Section Start -->
+    {% include 'landing/part/facts.html.twig' %}
+    <!-- facts Section End -->
+
+    <!-- Team Section Start -->
+    {% include 'landing/part/team.html.twig' %}
+    <!-- Team Section End -->
+
+    <!-- Pricing section Start -->
+    {% include 'landing/part/pricing.html.twig' %}
+    <!-- Pricing Table Section End -->
+
+    <!-- Single testimonial Start -->
+    {% include 'landing/part/testimonial.html.twig' %}
+    <!-- end -->
+
+    <!-- Contact Form Section Start -->
+    {% include 'landing/part/contact.html.twig' %}
+    <!-- Contact Form Section End -->
+
+{% endblock %}
