@@ -1,0 +1,9 @@
+<ul>
+    {% for resource in resources %}
+        <li>{{ resource.name }}
+            {% if resource.children is defined %}
+                {% include 'admin/resources/subtree.html.twig' with {'resources': resource.children, 'parentId':resource.id} %}
+            {% endif %}
+        </li>
+    {% endfor %}
+</ul>

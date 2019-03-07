@@ -41,6 +41,38 @@ class ResourcesRepository extends ServiceEntityRepository
             ->getArrayResult();
     }
 
+    public function getResourcesTree()
+    {
+
+        $rows = $this->createQueryBuilder('r')
+            ->select('r.id,r.name,r.level, p.id as parent_id')
+            ->leftJoin('r.parent', 'p')
+            ->getQuery()
+            ->getArrayResult();
+
+        return $this->buildTree($rows);
+
+    }
+
+    public function buildTree(array $elements, $parentId = 0)
+    {
+        $branch = array();
+
+        foreach ($elements as $element) {
+            $id = $element['parent_id'] ?? 0;
+            if ($id == $parentId) {
+                $children = $this->buildTree($elements, $element['id']);
+                if ($children) {
+                    $element['children'] = $children;
+                }
+                $branch[] = $element;
+            }
+        }
+
+        return $branch;
+    }
+
+
 //    /**
 //     * @return Resources[] Returns an array of Resources objects
 //     */

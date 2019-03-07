@@ -2,24 +2,51 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+ * @ORM\Table(name="resources")
  * @ORM\Entity(repositoryClass="App\Repository\ResourcesRepository")
  */
 class Resources
 {
     /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue
      */
     private $id;
 
     /**
+     * @ORM\Column(length=64)
+     */
+    private $title;
+
+    /**
      * @ORM\Column(type="integer")
      */
+    private $level;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Resources")
+     * @ORM\JoinColumn(referencedColumnName="id", onDelete="CASCADE")
+     */
+    private $root;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Resources", inversedBy="children")
+     * @ORM\JoinColumn(referencedColumnName="id", onDelete="CASCADE")
+     */
     private $parent;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Resources", mappedBy="parent")
+     * @ORM\OrderBy({"lft" = "ASC"})
+     */
+    private $children;
+
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -57,21 +84,39 @@ class Resources
      */
     private $template;
 
+    public function __construct()
+    {
+        $this->children = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getParent(): ?int
+    public function setTitle($title)
     {
-        return $this->parent;
+        $this->title = $title;
     }
 
-    public function setParent(string $parent): self
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    public function getRoot()
+    {
+        return $this->root;
+    }
+
+    public function setParent(Resources $parent = null)
     {
         $this->parent = $parent;
+    }
 
-        return $this;
+    public function getParent()
+    {
+        return $this->parent;
     }
 
     public function getName(): ?string
@@ -161,5 +206,55 @@ class Resources
     public function __toString()
     {
         return $this->name ?? '';
+    }
+
+    public function getLevel(): ?int
+    {
+        return $this->level;
+    }
+
+    public function setLevel(int $level): self
+    {
+        $this->level = $level;
+
+        return $this;
+    }
+
+    public function setRoot(?self $root): self
+    {
+        $this->root = $root;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Resources[]
+     */
+    public function getChildren(): Collection
+    {
+        return $this->children;
+    }
+
+    public function addChild(Resources $child): self
+    {
+        if (!$this->children->contains($child)) {
+            $this->children[] = $child;
+            $child->setParent($this);
+        }
+
+        return $this;
+    }
+
+    public function removeChild(Resources $child): self
+    {
+        if ($this->children->contains($child)) {
+            $this->children->removeElement($child);
+            // set the owning side to null (unless already changed)
+            if ($child->getParent() === $this) {
+                $child->setParent(null);
+            }
+        }
+
+        return $this;
     }
 }

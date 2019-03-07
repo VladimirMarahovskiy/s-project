@@ -1,7 +1,5 @@
 <?php
 
-// src/Admin/UsersAdmin.php
-
 namespace App\Admin;
 
 use Sonata\AdminBundle\Admin\AbstractAdmin;
@@ -35,6 +33,7 @@ final class ResourcesAdmin extends AbstractAdmin
 
     protected function configureListFields(ListMapper $listMapper)
     {
+
         $listMapper->addIdentifier('name');
     }
 }
