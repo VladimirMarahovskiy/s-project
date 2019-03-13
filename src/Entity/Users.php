@@ -3,79 +3,41 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use FOS\UserBundle\Model\User as BaseUser;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UsersRepository")
+ * @ORM\Table(name="fos_user")
  */
-class Users
+class Users extends BaseUser
 {
+    public function __construct()
+    {
+        $this->created_at = new \DateTime('now');
+       // $this->updatedAt = new \DateTime('now');
+      
+        parent::__construct();
+        // your own logic
+    }
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
-    private $id;
+    protected $id;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $username;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $email;
-
-    /**
-     * @ORM\Column(type="boolean")
-     */
-    private $is_active;
 
     /**
      * @ORM\Column(type="datetime")
      */
-    private $created_at;
+    protected $created_at;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getUsername(): ?string
-    {
-        return $this->username;
-    }
-
-    public function setUsername(string $username): self
-    {
-        $this->username = $username;
-
-        return $this;
-    }
-
-    public function getEmail(): ?string
-    {
-        return $this->email;
-    }
-
-    public function setEmail(string $email): self
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    public function getIsActive(): ?bool
-    {
-        return $this->is_active;
-    }
-
-    public function setIsActive(bool $is_active): self
-    {
-        $this->is_active = $is_active;
-
-        return $this;
-    }
 
     public function getCreatedAt(): ?\DateTimeInterface
     {
@@ -88,4 +50,5 @@ class Users
 
         return $this;
     }
+
 }

@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * @ORM\Table(name="resources")
@@ -20,12 +21,7 @@ class Resources
     private $id;
 
     /**
-     * @ORM\Column(length=64)
-     */
-    private $title;
-
-    /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer",options={"default":0})
      */
     private $level;
 
@@ -86,6 +82,7 @@ class Resources
 
     public function __construct()
     {
+        $this->level = 0;
         $this->children = new ArrayCollection();
     }
 
@@ -256,5 +253,15 @@ class Resources
         }
 
         return $this;
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function setParentId(Request $request)
+    {
+      /*  var_dump($request->get('parent_id'));
+        die();*/
+        $this->parent =  5;
     }
 }

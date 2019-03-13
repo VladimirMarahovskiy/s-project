@@ -1,7 +1,4 @@
 {
-    "behat/transliterator": {
-        "version": "v1.2.0"
-    },
     "cocur/slugify": {
         "version": "v3.2"
     },
@@ -89,8 +86,17 @@
     "fig/link-util": {
         "version": "1.0.0"
     },
-    "gedmo/doctrine-extensions": {
-        "version": "v2.4.36"
+    "friendsofsymfony/rest-bundle": {
+        "version": "2.2",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "2.2",
+            "ref": "258300d52be6ad59b32a888d5ddafbf9638540ff"
+        }
+    },
+    "friendsofsymfony/user-bundle": {
+        "version": "v2.1.2"
     },
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
@@ -134,9 +140,6 @@
     "psr/simple-cache": {
         "version": "1.0.1"
     },
-    "redcode/tree-bundle": {
-        "version": "0.1-alpha"
-    },
     "sensio/framework-extra-bundle": {
         "version": "5.2",
         "recipe": {
@@ -179,17 +182,14 @@
     "sonata-project/doctrine-orm-admin-bundle": {
         "version": "3.8.1"
     },
+    "sonata-project/easy-extends-bundle": {
+        "version": "2.5.0"
+    },
     "sonata-project/exporter": {
         "version": "2.0.1"
     },
-    "stof/doctrine-extensions-bundle": {
-        "version": "1.2",
-        "recipe": {
-            "repo": "github.com/symfony/recipes-contrib",
-            "branch": "master",
-            "version": "1.2",
-            "ref": "6c1ceb662f8997085f739cd089bfbef67f245983"
-        }
+    "sonata-project/user-bundle": {
+        "version": "4.3.0"
     },
     "swiftmailer/swiftmailer": {
         "version": "v6.1.3"
@@ -332,6 +332,9 @@
     "symfony/polyfill-intl-icu": {
         "version": "v1.9.0"
     },
+    "symfony/polyfill-intl-idn": {
+        "version": "v1.10.0"
+    },
     "symfony/polyfill-mbstring": {
         "version": "v1.9.0"
     },
@@ -469,6 +472,12 @@
     },
     "webmozart/assert": {
         "version": "1.3.0"
+    },
+    "willdurand/jsonp-callback-validator": {
+        "version": "v1.1.0"
+    },
+    "willdurand/negotiation": {
+        "version": "v2.3.1"
     },
     "zendframework/zend-code": {
         "version": "3.3.1"
