@@ -3,6 +3,11 @@ home:
   controller: App\Controller\MainController::index
   methods:   [GET]
 
+test:
+  path:     /test
+  controller: App\Controller\MainController::test
+  methods:   [GET]
+
 page:
   path:     /{slug}
   controller: App\Controller\MainController::page

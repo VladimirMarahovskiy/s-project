@@ -45,4 +45,13 @@ class MainController extends BaseController
         ]);
     }
 
+    public function test()
+    {
+
+        echo 'test';
+        return $this->render('test.html.twig', [
+            'controller_name' => 'MainController',
+        ]);
+    }
+
 }

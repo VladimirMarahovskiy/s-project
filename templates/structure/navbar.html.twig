@@ -14,7 +14,7 @@
         <div class="collapse navbar-collapse" id="main-navbar">
 
             <ul class="navbar-nav mr-auto w-100 justify-content-end clearfix">
-                {{ list_view.view({'parents':0,'template':'menu/li'}) }}
+                {{ list_view.view({'parent':1,'template':'menu/li'}) }}
             </ul>
         </div>
 
@@ -22,7 +22,7 @@
 
     <!-- Mobile Menu Start -->
     <ul class="mobile-menu navbar-nav">
-        {{ list_view.view({'parents':0,'template':'menu/li'}) }}
+        {{ list_view.view({'parent':1,'template':'menu/li'}) }}
     </ul>
     <!-- Mobile Menu End -->
 

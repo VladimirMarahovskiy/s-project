@@ -29,12 +29,12 @@ class FieldTypes
     /**
      * @ORM\Column(type="string", nullable=true)
      */
-    private $structure = [];
+    private $structure;
 
 
     public function __toString()
     {
-        return $this->title;
+        return (string)$this->title;
     }
 
     public function getId(): ?int
@@ -78,4 +78,5 @@ class FieldTypes
 
         return $this;
     }
+
 }

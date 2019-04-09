@@ -29,21 +29,31 @@ class ResourcesRepository extends ServiceEntityRepository
             ->getOneOrNullResult();
     }
 
+    public function getResourceById(int $id, string $field)
+    {
+        return $this->createQueryBuilder('r')
+            ->select('r.'.$field)
+            ->andWhere('r.id = :id')
+            ->setParameter('id', $id)
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
+
+
     public function getList(array $params)
     {
-
         return $this->createQueryBuilder('r')
-            /* ->andWhere('r.exampleField = :val')
-             ->setParameter('val', $value)
-             ->orderBy('r.id', 'ASC')
-             ->setMaxResults(10)*/
+            ->andWhere('r.parent = :parent_id')
+            ->setParameter('parent_id', $params['parent'])
+            ->orderBy('r.id', 'ASC')
+            ->setMaxResults($params['limit'] ?? 10)
             ->getQuery()
             ->getArrayResult();
     }
 
     public function getResourcesTree()
     {
-
         $rows = $this->createQueryBuilder('r')
             ->select('r.id,r.name,r.level, p.id as parent_id')
             ->leftJoin('r.parent', 'p')

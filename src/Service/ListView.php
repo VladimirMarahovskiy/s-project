@@ -37,20 +37,20 @@ class ListView extends AbstractController
         if ($this->prepareParams($params)) {
 
             $resources = $this->entityManager->getRepository(Resources::class)->getList($this->params);
-
-            foreach ($resources as $resource) {
-                echo $this->renderView($this->params['template'], $resource);
+            if($resources) {
+                foreach ($resources as $key => $resource) {
+                    echo $this->renderView($this->params['template'], array_merge($resource, ['key' => $key]));
+                }
             }
-
         } else {
-            $this->createNotFoundException();
+            return $this->createNotFoundException();
         }
     }
 
     private function prepareParams(array $params)
     {
-        if (isset($params['parents'])) {
-            $this->params['parents'] = explode(',', $params['parents']);
+        if (isset($params['parent'])) {
+            $this->params['parent'] = $params['parent'];
 
         } else {
             return false;

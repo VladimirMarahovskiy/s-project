@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -13,6 +14,10 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class Resources
 {
+
+    const UPLOADS = __DIR__.'/../../public/uploads';
+    const WEB = '/uploads/';
+
     /**
      * @ORM\Column(type="integer")
      * @ORM\Id
@@ -80,6 +85,50 @@ class Resources
      */
     private $template;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $image;
+
+
+
+    private $file;
+
+
+    public function setFile(UploadedFile $file = null)
+    {
+        $this->file = $file;
+    }
+
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+    /**
+     * Manages the copying of the file to the relevant place on the server
+     */
+    public function upload()
+    {
+
+        // the file property can be empty if the field is not required
+        if (null === $this->getFile()) {
+            return;
+        }
+
+        // move takes the target directory and target filename as params
+        $this->getFile()->move(
+            self::UPLOADS,
+            $this->getFile()->getClientOriginalName()
+        );
+
+        // set the path property to the filename where you've saved the file
+        $this->filename = $this->getFile()->getClientOriginalName();
+        $this->setImage($this->filename);
+        // clean up the file property as you won't need it anymore
+        $this->setFile(null);
+    }
+
     public function __construct()
     {
         $this->level = 0;
@@ -89,6 +138,20 @@ class Resources
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function setImage($image)
+    {
+        $this->image = $image;
+    }
+
+    public function getImage()
+    {
+        return $this->image;
+    }
+    public function getImagePath()
+    {
+        return self::WEB . $this->getImage();
     }
 
     public function setTitle($title)

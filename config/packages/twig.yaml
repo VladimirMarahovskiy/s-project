@@ -5,3 +5,5 @@ twig:
 
     globals:
         list_view: '@App\Service\ListView'
+        image_view: '@App\Service\ImageView'
+        field_view: '@App\Service\FieldView'

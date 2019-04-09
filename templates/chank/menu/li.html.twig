@@ -1,6 +1,5 @@
-
 <li class="nav-item ">
-    <a class="nav-link {% if this.id == id %}active{% endif %}" href="#sliders">
+    <a class="nav-link {% if this.id == id %}active{% endif %}" href="{{ path('page' , {'slug':slug}) }}">
         {{ name }}
     </a>
 </li>

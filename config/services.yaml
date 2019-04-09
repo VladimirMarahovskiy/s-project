@@ -33,6 +33,16 @@ services:
     arguments: ['@doctrine.orm.entity_manager']
     tags: ['service.list_view']
 
+  App\Service\ImageView:
+    public: true
+    arguments: ['@doctrine.orm.entity_manager']
+    tags: ['service.image_view']
+
+  App\Service\FieldView:
+    public: true
+    arguments: ['@doctrine.orm.entity_manager']
+    tags: ['service.field_view']
+
   App\Twig\AppExtension:
     public: false
     tags:

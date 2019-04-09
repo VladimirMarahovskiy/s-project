@@ -1,0 +1,7 @@
+paremeters:
+  mailer_transport:  smtp
+  mailer_host:       127.0.0.1
+  mailer_encryption: ~
+  mailer_user:       dev@i.ua
+  mailer_password:   awdasd
+  upload_directory: '%kernel.project_dir%/public/uploads'

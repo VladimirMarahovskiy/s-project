@@ -1,0 +1,12 @@
+<a href="{{ path('admin_app_resources_edit',{id:resource.id}) }}">
+    {{ resource.name }} <b>({{ resource.id }})</b>
+</a>
+{#<a href="{{ path('admin_app_resources_create',{parent_id:resource.id}) }}">
+    <i class="fa fa-plus"></i>
+</a>
+<a href="{{ path('admin_app_resources_edit',{id:resource.id}) }}">
+    <i class="fa fa-edit"></i>
+</a>#}
+<a href="{{ path('admin_app_resources_delete',{id:resource.id}) }}">
+    <i class="fa fa-trash"></i>
+</a>
