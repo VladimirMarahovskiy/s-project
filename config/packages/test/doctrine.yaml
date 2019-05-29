@@ -14,8 +14,8 @@ doctrine:
         default_table_options:
             charset: utf8mb4
             collate: utf8mb4_unicode_ci
-        url: 'mysql://admin:awdasd@172.16.238.12:3306/s-project'
-
+        url: 'mysql://root:awdasd@127.0.0.1:3306/s-project'
+            #url: '%env(resolve:DATABASE_URL)%'
     orm:
         auto_generate_proxy_classes: '%kernel.debug%'
         entity_managers:

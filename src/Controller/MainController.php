@@ -18,7 +18,7 @@ class MainController extends BaseController
      */
     public function index()
     {
-        $homePageId = $this->getDoctrine()->getRepository(Settings::class)->getHomePageId();
+        $homePageId = 1;//$this->getDoctrine()->getRepository(Settings::class)->getHomePageId();
 
         if (($page = $this->getDoctrine()->getRepository(Resources::class)->find($homePageId)) == NULL) {
             throw $this->createNotFoundException('The resources does not exist');
